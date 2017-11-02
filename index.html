@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Stranka</title>
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<script type="text/javascript">  
+		function showAlert()
+		{  	
+				var frname;
+				var lname;
+				frname = document.getElementById("umn").value;
+				lname = document.getElementById("usn").value;
+				alert("THIS IS "+frname+" "+lname+" homework");
+				document.getElementById("someone").innerHTML="THIS IS "+frname+" "+lname+" homework";
+				console.log("wutt");
+		}  
+		function deleteOutput()
+		{
+			document.getElementById("someone").innerHTML="";
+		}
+		function printmessage()
+		{
+			document.getElementById("message").innerHTML="Click on me";
+		}
+		function delmessage()
+		{
+			document.getElementById("message").innerHTML="";
+		}
+</script>  
+
+</head>
+<body>
+	<form>
+			<table align="center">
+			<tr>
+				<td>Name</td>
+				<td><input type="text" name="uname" id="umn"></td>
+			</tr>
+			<tr>
+				<td>Surname</td>
+				<td><input type="text" name="usurn" id="usn"></td>
+			</tr>
+			<tr>
+				<td><input value="Reset" type="reset" style="color: red"  onclick="deleteOutput()" ></td>
+				<td><input value="OK" type="button" style="color: green" align="center"  onmouseover="printmessage()" onclick="showAlert()" onmouseout="delmessage()"></td>
+			</tr>
+		</table>
+	</form>
+
+	<dir id="someone"></dir>
+	<div id="message"></div>
+
+</body>
+</html>
