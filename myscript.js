@@ -49,8 +49,16 @@ function generator()
   cell3.innerHTML = age;
   cell4.innerHTML = sex;
   deltable();
-  
+
 }
+function doSumm()
+{
+  var a = parseInt(document.getElementById("uname").value, 10);
+  var b = parseInt(document.getElementById("usurname").value, 10);
+  var y = parseInt( a + b);
+  document.getElementById("message").innerHTML=parseInt(y);
+}
+
 function deltable()
 {
   var frm = document.getElementsByName("myTable");
