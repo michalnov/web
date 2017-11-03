@@ -49,7 +49,7 @@ function generator()
   cell3.innerHTML = age;
   cell4.innerHTML = sex;
   deltable();
-
+  
 }
 function deltable()
 {
