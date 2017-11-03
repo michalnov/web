@@ -48,5 +48,13 @@ function generator()
   cell2.innerHTML = surname;
   cell3.innerHTML = age;
   cell4.innerHTML = sex;
+  deltable();
 
+}
+function deltable()
+{
+  var frm = document.getElementsByName("myTable");
+  //frm.submit(); // Submit the form
+  frm.reset();  // Reset all form data
+  return false;
 }
