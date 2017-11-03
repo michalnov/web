@@ -7,30 +7,7 @@
 
 	<link rel="stylesheet" type="text/css" href="style.css">
 
-	<script type="text/javascript">  
-		function showAlert()
-		{  	
-				var frname;
-				var lname;
-				frname = document.getElementById("umn").value;
-				lname = document.getElementById("usn").value;
-				alert("THIS IS "+frname+" "+lname+" homework");
-				document.getElementById("someone").innerHTML="THIS IS "+frname+" "+lname+" homework";
-				console.log("wutt");
-		}  
-		function deleteOutput()
-		{
-			document.getElementById("someone").innerHTML="";
-		}
-		function printmessage()
-		{
-			document.getElementById("message").innerHTML="Click on me";
-		}
-		function delmessage()
-		{
-			document.getElementById("message").innerHTML="";
-		}
-</script>  
+	<script type="text/javascript" src="myscript.js"></script>
 
 </head>
 <body>
@@ -38,21 +15,42 @@
 			<table align="center">
 			<tr>
 				<td>Name</td>
-				<td><input type="text" name="uname" id="umn"></td>
+				<td><input type="text" name="userName" id="uname"></td>
 			</tr>
 			<tr>
 				<td>Surname</td>
-				<td><input type="text" name="usurn" id="usn"></td>
+				<td><input type="text" name="userSurname" id="usurname"></td>
 			</tr>
 			<tr>
-				<td><input value="Reset" type="reset" style="color: red"  onclick="deleteOutput()" ></td>
-				<td><input value="OK" type="button" style="color: green" align="center"  onmouseover="printmessage()" onclick="showAlert()" onmouseout="delmessage()"></td>
+				<td>Age</td>
+				<td><input type="date" name="userAge" id="uage"></td>
+			</tr>
+			<tr>
+				<td>Gender</td>
+				<td>
+					<input type="radio" name="userGender" id="opt1" value="male">Male<br>
+					<input type="radio" name="userGender" id="opt2" value="female">Female<br>
+					<input type="radio" name="userGender" id="opt3" value="non" checked>preffered not to say<br>
+				</td>
+			</tr>
+			<tr>
+				<td><input value="Reset" type="reset" style="color: red"  onclick="deleteOutput()" onclick="generator()" ></td>
+				<td><input value="OK" type="button" style="color: green" align="center"  onmouseover="printmessage()" onmouseout="delmessage()"></td>
+			</tr>
+			<tr>
+				<td><input value="Add to table" type="button" style="color: blue"  onclick="generator()" ></td>
+				<td><input value="OK" type="button" style="color: green" align="center"  onclick="deltable()"></td>
 			</tr>
 		</table>
 	</form>
 
 	<dir id="someone"></dir>
 	<div id="message"></div>
+	<div class="tabulka">
+		<table id="myTable">
+
+		</table>
+	</div>
 
 </body>
 </html>
