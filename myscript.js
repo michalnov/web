@@ -56,6 +56,9 @@ function doSumm()
   var a = parseInt(document.getElementById("uname").value, 10);
   var b = parseInt(document.getElementById("usurname").value, 10);
   var y = parseInt( a + b);
+  if (a == 0 && b == 0) {
+    y = 0;
+  }
   document.getElementById("message").innerHTML=parseInt(y);
 }
 
