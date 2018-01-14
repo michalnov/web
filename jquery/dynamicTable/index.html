@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<title>Stranka</title>
 	<meta charset="utf-8">
@@ -10,90 +9,75 @@
 	<script type="text/javascript" src="source/myscript.js"></script>
   <script type="text/javascript" src="source/jquery-3.2.1.js"></script>
   <script type="text/javascript">
-    var tableContent;
+    var tableContent = [];
 
-    function createAlert(where) {
-      var img = document.createElement('img');
-      document.getElementById(where).innerHTML = "Invalid value";
-      $('#'+where).css('color', 'red');
-      img.setAttribute("src","source/alert.png");
-      img.style.width = "25px";
-      document.getElementById(where).appendChild(img);
-    }
+    function addToContent() {
 
-    function clearAlert(where) {
-      document.getElementById(where).innerHTML = "";
-    }
-
-    function getDocumentDate() {
-      var date = document.getElementById('uage').value;
-      var parsedDate = date.split("-");
-      return parsedDate;
-    }
-
-    function inputControl() {
-      var name = $('#uname').val();
-      var surname = $('#usurname').val();
-      var parsedDate = getDocumentDate();
-      var actual = new Date();
-      var currentDay = actual.getDate();
-      var currentMonth = actual.getMonth();
-      var currentYear = actual.getFullYear();
-      var error1 = false;
-      console.log(name);
-      console.log(surname);
-      console.log(parsedDate);
-      if (name == "" || name.length < 2) {
-        clearAlert("alertName");
-        createAlert("alertName");
-        error1 = true;
-      }
-      else {
-        clearAlert("alertName");
-        error1 = false;
-      }
-      if (surname == "" || surname.length < 2) {
-        clearAlert("alertSurname");
-        createAlert("alertSurname");
-        error1 = true;
-      }
-      else {
-        clearAlert("alertSurname");
-        error1 = false;
-      }
-
-      if (parsedDate == "" || parsedDate.length < 2 || currentYear < parsedDate[0]) {
-        console.log("aa");
-        clearAlert("alertDate");
-        createAlert("alertDate");
-        error1 = true;
-      }
-      else {
-        if (currentYear > parsedDate[0]) {
-          clearAlert("alertDate");
-          error1 = false;
+      if (inputControl() == false) {
+        var name = $('#uname').val();
+        var surname = $('#usurname').val();
+        var gender = "";
+        if (document.getElementById('opt1').checked == true) {
+          gender = "male";
         }
-        else
-        {
-          if ((parseInt(currentMonth)+1) >= parsedDate[1]) {
-            if (currentDay >= parsedDate[2]) {
-              clearAlert("alertDate");
-              error1 = false;
-            }
-            else {
-              clearAlert("alertDate");
-              createAlert("alertDate");
-              error1 = true;
-            }
+        else {
+          gender = "female";
+        }
+        var parsedDate = getDocumentDate();
+        var swapDate = parsedDate[2]+"-"+parsedDate[1]+"-"+parsedDate[0];
+        var swapString = {name:name, surname:surname, gender:gender, birth:swapDate};
+        console.log(swapString);
+        tableContent[tableContent.length] = swapString;
+      }
+      else {
+
+      }
+
+    }
+
+    function drawTable(param) {
+      var max = 3;
+      if (document.getElementById('showDate').checked == true) {
+        max++;
+      }
+      document.getElementById('results').innerHTML = "";
+      if (max == 3) {
+        $('#results').append( '<th>Name</th><th>Surname</th><th>Gender</th>' );
+        for (var i = 0; i < tableContent.length; i++) {
+          if (param == "both") {
+
+          }
+          else if (param == "male" && tableContent[i].gender == "male") {
+
+          }
+          else if (param == "female" && tableContent[i].gender == "female") {
+
           }
           else {
-            clearAlert("alertDate");
-            createAlert("alertDate");
-            error1 = true;
+            continue;
           }
+          $('#results').append( '<tr><td>'+tableContent[i].name+'</td><td>'+tableContent[i].surname+'</td><td>'+tableContent[i].gender+'</td></tr>' );
         }
       }
-      return error1;
+      else {
+        $('#results').append( '<th>Name</th><th>Surname</th><th>Gender</th><th>Date of birth</th>' );
+        for (var i = 0; i < tableContent.length; i++) {
+          if (param == "both") {
+
+          }
+          else if (param == "male" && tableContent[i].gender == "male") {
+
+          }
+          else if (param == "female" && tableContent[i].gender == "female") {
+
+          }
+          else {
+            continue;
+          }
+          $('#results').append( '<tr><td>'+tableContent[i].name+'</td><td>'+tableContent[i].surname+'</td><td>'+tableContent[i].gender+'</td><td>'+tableContent[i].birth+'</td></tr>' );
+        }
+      }
+
     }
 
   </script>
@@ -127,27 +111,35 @@
 				<td>Gender</td>
 				<td>
 					<input type="radio" name="userGender" id="opt1" value="male">Male<br>
-					<input type="radio" name="userGender" id="opt2" value="female">Female<br>
-					<input type="radio" name="userGender" id="opt3" value="" checked>preffered not to say<br>
+					<input type="radio" name="userGender" id="opt2" value="female" checked>Female<br>
 				</td>
 			</tr>
 			<tr>
 				<td>Controls</td>
 				<td>
-          <input value="Add to table" type="button" style="color: blue"  onclick="inputControl()" >
+          <input value="Add to table" type="button" style="color: blue"  onclick="addToContent()" >
           <input value="Reset" type="reset" style="color: red"  onclick="deleteOutput()" onclick="generator()" >
         </td>
 			</tr>
 		</table>
 	</form>
 
-	<dir id="someone"></dir>
-	<div id="message"></div>
-	<div class="tabulka">
-		<table id="myTable">
-
-		</table>
+	<div id="controls">
+	  <table align="center" style="border: transparent;" >
+	    <tr>
+        <td style="width: 110px; border: transparent;">SHOW: </td>
+	      <td style="width: 110px; border: transparent;"><button type="button" name="button" onclick="drawTable('male');">Male</button></td>
+        <td style="width: 110px; border: transparent;"><button type="button" name="button" onclick="drawTable('female');">Female</button></td>
+        <td style="width: 110px; border: transparent;"><button type="button" name="button" onclick="drawTable('both');">Both</button></td>
+        <td style="width: 110px; border: transparent;"> Date <input type="checkbox" id="showDate" value="" checked> </td>
+	    </tr>
+	  </table>
 	</div>
+  <div id="resultTable" align="center">
+    <table id="results" align="center">
+
+    </table>
+  </div>
 
 </body>
 </html>

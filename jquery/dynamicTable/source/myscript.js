@@ -1,3 +1,88 @@
+function createAlert(where) {
+  var img = document.createElement('img');
+  document.getElementById(where).innerHTML = "Invalid value";
+  $('#'+where).css('color', 'red');
+  img.setAttribute("src","source/alert.png");
+  img.style.width = "25px";
+  document.getElementById(where).appendChild(img);
+}
+
+function clearAlert(where) {
+  document.getElementById(where).innerHTML = "";
+}
+
+function getDocumentDate() {
+  var date = document.getElementById('uage').value;
+  var parsedDate = date.split("-");
+  return parsedDate;
+}
+
+function inputControl() {
+  var name = $('#uname').val();
+  var surname = $('#usurname').val();
+  var parsedDate = getDocumentDate();
+  var actual = new Date();
+  var currentDay = actual.getDate();
+  var currentMonth = actual.getMonth();
+  var currentYear = actual.getFullYear();
+  var error1 = false;
+  if (name == "" || name.length < 2) {
+    clearAlert("alertName");
+    createAlert("alertName");
+    error1 = true;
+  }
+  else {
+    clearAlert("alertName");
+    error1 = false;
+  }
+  if (surname == "" || surname.length < 2) {
+    clearAlert("alertSurname");
+    createAlert("alertSurname");
+    error1 = true;
+  }
+  else {
+    clearAlert("alertSurname");
+    error1 = false;
+  }
+
+  if (parsedDate == "" || parsedDate.length < 2 || currentYear < parsedDate[0]) {
+    clearAlert("alertDate");
+    createAlert("alertDate");
+    error1 = true;
+  }
+  else {
+    if (currentYear > parsedDate[0]) {
+      clearAlert("alertDate");
+      error1 = false;
+    }
+    else
+    {
+      if ((parseInt(currentMonth)+1) >= parsedDate[1]) {
+        if (currentDay >= parsedDate[2]) {
+          clearAlert("alertDate");
+          error1 = false;
+        }
+        else {
+          clearAlert("alertDate");
+          createAlert("alertDate");
+          error1 = true;
+        }
+      }
+      else {
+        clearAlert("alertDate");
+        createAlert("alertDate");
+        error1 = true;
+      }
+    }
+  }
+  return error1;
+}
+
+
+
+
+
+/*
 function showAlert()
 {
     var frname;
@@ -69,3 +154,4 @@ function deltable()
   frm.reset();  // Reset all form data
   return false;
 }
+*/
