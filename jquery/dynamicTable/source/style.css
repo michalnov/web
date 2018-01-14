@@ -1,0 +1,14 @@
+td
+{
+  border: 1px solid black;
+  padding: 7px;
+}
+table
+{
+  border: 1px solid black;
+  padding: 1px;
+}
+table.menu
+{
+  position: absolute;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Stranka</title>
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<script type="text/javascript" src="myscript.js"></script>
+
+</head>
+<body>
+	<table id="menu" style="padding: 2px">
+		<th>Menu</th>
+		<th></th>
+		<tr>
+			<td>Clear</td>
+			<td><input type="button" value="clear" id="clear" style="color: red" onclick="wipeall()"></td>
+		</tr>
+		<tr>
+			<td>Add numbers</td>
+			<td><input type="button" value="Do it" id="add" style="color: green"></td>
+		</tr>
+		<tr>
+			<td>Swap numbers</td>
+			<td><input type="button" value="Do it" id="swap" style="color: green"></td>
+		</tr>
+		<tr>
+			<td>Sum numbers</td>
+			<td><input type="button" value="Do it" id="sum" style="color: green"></td>
+		</tr>
+		<tr>
+			<td>Personal <br>informations</td>
+			<td><input type="button" value="Do it" id="personForm" style="color: green"></td>
+		</tr>
+	</table>
+	<form name="myTable">
+			<table align="center">
+			<tr>
+				<td>Name</td>
+				<td><input type="text" name="userName" id="uname"></td>
+			</tr>
+			<tr>
+				<td>Surname</td>
+				<td><input type="text" name="userSurname" id="usurname"></td>
+			</tr>
+			<tr>
+				<td>Age</td>
+				<td><input type="date" name="userAge" id="uage"></td>
+			</tr>
+			<tr>
+				<td>Gender</td>
+				<td>
+					<input type="radio" name="userGender" id="opt1" value="male">Male<br>
+					<input type="radio" name="userGender" id="opt2" value="female">Female<br>
+					<input type="radio" name="userGender" id="opt3" value="" checked>preffered not to say<br>
+				</td>
+			</tr>
+			<tr>
+				<td><input value="Reset" type="reset" style="color: red"  onclick="deleteOutput()" onclick="generator()" ></td>
+				<td><input value="OK" type="button" style="color: green" align="center"  onmouseover="printmessage()" onmouseout="delmessage()"></td>
+			</tr>
+			<tr>
+				<td><input value="Add to table" type="button" style="color: blue"  onclick="generator()" ></td>
+				<td><input value="clear" type="button" style="color: black" align="center"  onclick="doSumm()"></td>
+			</tr>
+		</table>
+	</form>
+
+	<dir id="someone"></dir>
+	<div id="message"></div>
+	<div class="tabulka">
+		<table id="myTable">
+
+		</table>
+	</div>
+
+</body>
+</html>
