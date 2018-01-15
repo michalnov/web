@@ -11,6 +11,22 @@
   <script type="text/javascript">
     var tableContent = [];
 
+		var actualParam;
+
+		function remove(item) {
+			var swap = tableContent;
+			for (var i = 0; i < tableContent.length; i++) {
+				if (i == item) {
+					console.log("item "+i+" removed");
+				}
+				else {
+					tableContent[i] = swap[i];
+				}
+
+			}
+			drawTable(actualParam);
+		}
+
     function addToContent() {
 
       if (inputControl() == false) {
@@ -25,9 +41,9 @@
         }
         var parsedDate = getDocumentDate();
         var swapDate = parsedDate[2]+"-"+parsedDate[1]+"-"+parsedDate[0];
-        var swapString = {name:name, surname:surname, gender:gender, birth:swapDate};
-        console.log(swapString);
-        tableContent[tableContent.length] = swapString;
+        var swapObject = {name:name, surname:surname, gender:gender, birth:swapDate};
+        console.log(swapObject);
+        tableContent.push(swapObject);
       }
       else {
 
@@ -36,13 +52,18 @@
     }
 
     function drawTable(param) {
+			actualParam = param;
+			if (tableContent.length == 0) {
+				return ;
+			}
+			var counter = 0;
       var max = 3;
       if (document.getElementById('showDate').checked == true) {
         max++;
       }
       document.getElementById('results').innerHTML = "";
       if (max == 3) {
-        $('#results').append( '<th>Name</th><th>Surname</th><th>Gender</th>' );
+        $('#results').append( '<th>Name</th><th>Surname</th><th>Gender</th><th>remove</th>' );
         for (var i = 0; i < tableContent.length; i++) {
           if (param == "both") {
 
@@ -56,11 +77,12 @@
           else {
             continue;
           }
-          $('#results').append( '<tr><td>'+tableContent[i].name+'</td><td>'+tableContent[i].surname+'</td><td>'+tableContent[i].gender+'</td></tr>' );
+          $('#results').append( '<tr><td>'+tableContent[i].name+'</td><td>'+tableContent[i].surname+'</td><td>'+tableContent[i].gender+'</td><td><input type="button" value="X" onclick="remove('+"'"+i+"'"+')" style="color:red;"></td></tr>' );
+					counter++;
         }
       }
       else {
-        $('#results').append( '<th>Name</th><th>Surname</th><th>Gender</th><th>Date of birth</th>' );
+        $('#results').append( '<th>Name</th><th>Surname</th><th>Gender</th><th>Date of birth</th><th>Remove</th>' );
         for (var i = 0; i < tableContent.length; i++) {
           if (param == "both") {
 
@@ -74,10 +96,13 @@
           else {
             continue;
           }
-          $('#results').append( '<tr><td>'+tableContent[i].name+'</td><td>'+tableContent[i].surname+'</td><td>'+tableContent[i].gender+'</td><td>'+tableContent[i].birth+'</td></tr>' );
+          $('#results').append( '<tr><td>'+tableContent[i].name+'</td><td>'+tableContent[i].surname+'</td><td>'+tableContent[i].gender+'</td><td>'+tableContent[i].birth+'</td><td><input type="button" value="X" onclick="remove('+"'"+i+"'"+')" style="color:red;"></td></tr>' );
+					counter++;
         }
       }
-
+			if (counter == 0) {
+				document.getElementById('results').innerHTML = "";
+			}
     }
 
   </script>
