@@ -14,13 +14,18 @@
 		var actualParam;
 
 		function remove(item) {
-			var swap = tableContent;
+			var swap = window.tableContent;
+			//window.tableContent = [];
+			var counter = 0;
 			for (var i = 0; i < tableContent.length; i++) {
 				if (i == item) {
 					console.log("item "+i+" removed");
+					continue;
 				}
 				else {
-					tableContent[i] = swap[i];
+					window.tableContent[counter] = swap[i];
+					window.tableContent.length = counter;
+					counter++;
 				}
 
 			}

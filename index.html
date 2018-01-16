@@ -1,80 +1,103 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-	<title>Stranka</title>
-	<meta charset="utf-8">
-
-	<link rel="stylesheet" type="text/css" href="style.css">
-
-	<script type="text/javascript" src="myscript.js"></script>
-
+    <meta charset="utf-8">
+    <title>canvas</title>
+    <style>
+        
+    </style>
 </head>
-<body>
-	<table id="menu" style="padding: 2px">
-		<th>Menu</th>
-		<th></th>
-		<tr>
-			<td>Clear</td>
-			<td><input type="button" value="clear" id="clear" style="color: red" onclick="wipeall()"></td>
-		</tr>
-		<tr>
-			<td>Add numbers</td>
-			<td><input type="button" value="Do it" id="add" style="color: green"></td>
-		</tr>
-		<tr>
-			<td>Swap numbers</td>
-			<td><input type="button" value="Do it" id="swap" style="color: green"></td>
-		</tr>
-		<tr>
-			<td>Sum numbers</td>
-			<td><input type="button" value="Do it" id="sum" style="color: green"></td>
-		</tr>
-		<tr>
-			<td>Personal <br>informations</td>
-			<td><input type="button" value="Do it" id="personForm" style="color: green"></td>
-		</tr>
-	</table>
-	<form name="myTable">
-			<table align="center">
-			<tr>
-				<td>Name</td>
-				<td><input type="text" name="userName" id="uname"></td>
-			</tr>
-			<tr>
-				<td>Surname</td>
-				<td><input type="text" name="userSurname" id="usurname"></td>
-			</tr>
-			<tr>
-				<td>Age</td>
-				<td><input type="date" name="userAge" id="uage"></td>
-			</tr>
-			<tr>
-				<td>Gender</td>
-				<td>
-					<input type="radio" name="userGender" id="opt1" value="male">Male<br>
-					<input type="radio" name="userGender" id="opt2" value="female">Female<br>
-					<input type="radio" name="userGender" id="opt3" value="" checked>preffered not to say<br>
-				</td>
-			</tr>
-			<tr>
-				<td><input value="Reset" type="reset" style="color: red"  onclick="deleteOutput()" onclick="generator()" ></td>
-				<td><input value="OK" type="button" style="color: green" align="center"  onmouseover="printmessage()" onmouseout="delmessage()"></td>
-			</tr>
-			<tr>
-				<td><input value="Add to table" type="button" style="color: blue"  onclick="generator()" ></td>
-				<td><input value="clear" type="button" style="color: black" align="center"  onclick="doSumm()"></td>
-			</tr>
-		</table>
-	</form>
+<body style="float: center">
+    <canvas id="Canvas" width="500" height="300" style="border:1px solid #000000;"></canvas><br>
+    <input type="text" id="input" size="2">
+    <button onclick="draw()">OK</button>
 
-	<dir id="someone"></dir>
-	<div id="message"></div>
-	<div class="tabulka">
-		<table id="myTable">
-
-		</table>
-	</div>
-
+    <script type="text/javascript">
+        
+        var actual = 0;
+        
+        var c = document.getElementById("Canvas");
+        var ctx = c.getContext("2d");
+        ctx.moveTo(0,150);
+        ctx.lineTo(500,150);
+        ctx.font = "12px Arial";
+        ctx.strokeText("50",10,20);    
+        ctx.font = "12px Arial";
+        ctx.strokeText("0",10,165);
+        ctx.font = "12px Arial";
+        ctx.strokeText("- 50",10,285);
+        ctx.moveTo(0,150);
+        ctx.stroke();
+        var x=0;
+        function draw () {
+            var y = document.getElementById("input").value; 
+            yz=150-(3*parseInt(y));
+            x+=20;
+            console.log()
+            ctx.lineTo(x,yz);
+            ctx.stroke();
+            
+            if(x>=500)
+            {
+                return 0;
+            }
+        }
+        function change(tochange)
+        {
+            if(tochange == "1")
+                {
+                    document.getElementById("contentimg").src="";
+                    document.getElementById("contentimg").src="picture/1.jpg";
+                    document.getElementById("next").value = "2";
+                    document.getElementById("prew").value = "5";
+                    
+                }
+            else if(tochange == "2")
+                {
+                    document.getElementById("contentimg").src="";
+                    document.getElementById("contentimg").src="picture/2.jpg";
+                    document.getElementById("next").value = "3";
+                    document.getElementById("prew").value = "1";
+                }
+            else if(tochange == "3")
+                {
+                    document.getElementById("contentimg").src="";
+                    document.getElementById("contentimg").src="picture/3.jpg";
+                    document.getElementById("next").value = "2";
+                    document.getElementById("prew").value = "5";
+                }
+            else if(tochange == "4")
+                {
+                    document.getElementById("contentimg").src="";
+                    document.getElementById("contentimg").src="picture/4.jpg";
+                    document.getElementById("next").value = "2";
+                    document.getElementById("prew").value = "5";
+                }
+            else if(tochange == "5")
+                {
+                    document.getElementById("contentimg").src="";
+                    document.getElementById("contentimg").src="picture/5.png";
+                    document.getElementById("next").value = "2";
+                    document.getElementById("prew").value = "5";
+                }
+        }
+        function next()
+        {
+            var nextimg = 
+        }
+    </script>
+    
+    <div id="imgs"> 
+        <img src="picture/1.jpg" class="small" onclick="change('1')" style="width: 100px; margin: 5px; padding: 5px;"> 
+        <img src="picture/2.jpg" class="small" onclick="change('2')" style="width: 100px; margin: 5px; padding: 5px;"> 
+        <img src="picture/3.jpg" class="small" onclick="change('3')" style="width: 100px; margin: 5px; padding: 5px;"> 
+        <img src="picture/4.jpg" class="small" onclick="change('4')" style="width: 100px; margin: 5px; padding: 5px;"> 
+        <img src="picture/5.png" class="small" onclick="change('5')" style="width: 100px; margin: 5px; padding: 5px;"> 
+    </div>
+    <div> <input type="button" id="next" onclick="next()"> <input type="button" id="prew" onclick="prewious()" value=""> </div>
+    <div id="content" > 
+        <img id="contentimg" src="" style="width: 500px"> 
+    </div>
+    
 </body>
 </html>
