@@ -78,6 +78,27 @@ function inputControl() {
   return error1;
 }
 
+function loadFromStorage() {
+  if(typeof(Storage) !== "undefined")
+  { window.tableContent = JSON.parse(localStorage.persons);
+    drawTable(actualParam);
+  }
+  else {
+  document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+    return;
+  }
+}
+
+function saveToStorage() {
+  if(typeof(Storage) !== "undefined")
+  { localStorage.persons = JSON.stringify(window.tableContent); }
+  else {
+  document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+    return;
+  }
+
+}
+
 
 
 
