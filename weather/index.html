@@ -17,53 +17,75 @@
     <div class="col-sm-3">
     </div>
     <div class="col-sm-6">
-      <table>
-        <th>Search by city name</th>
-        <th>Search by city ID</th>
-        <th>Search by Geo Coords</th>
-        <tr>
-
-        </tr>
-      </table>
-      <form class="" action="index.html" method="post">
+      <div class="static">
         <table>
+          <th class="col-sm-2">Search by City Name</th>
+          <th class="col-sm-2">Search by city ID</th>
+          <th class="col-sm-2">Search by Geo Coords</th>
           <tr>
-            <td>Search by city name</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>City: </td>
-            <td> <input type="text" name="" value="" id="cityName" placeholder="McMurdo Station"> </td>
-          </tr>
-          <tr>
-            <td>Country code: </td>
-            <td> <input type="text" name="" value="" id="countryCode" maxlength="3" style="width: 60px;" placeholder=""> </td>
-          </tr>
-          <tr>
-            <td>Search by city ID</td>
-          </tr>
-          <tr>
-            <td>City ID: </td>
-            <td> <input type="text" name="" value=""> </td>
-          </tr>
-          <tr>
-            <td> Search by Geo Coords </td>
-          </tr>
-          <tr>
-            <td> <input type="text" name="" value="" placeholder="-77.6554"> </td>
-            <td> <input type="text" name="" value="" placeholder="168.2227"> </td>
-          </tr>
-          <tr>
-            <td> <button type="button" id="ok" name="button"></button> </td>
+            <td class="col-sm-2"> <img src="source/name.png" style="width: 100px;" onclick="searchByName()"> </td>
+            <td class="col-sm-2"> <img src="source/id.png" style="width: 100px;" onclick="searchByID()"> </td>
+            <td class="col-sm-2"> <img src="source/coords.png" style="width: 100px;" onclick="searchByCoords()"> </td>
           </tr>
         </table>
-      </form>
+      </div>
+
+      <div id="content" class="dynamic">
+      </div>
 
     </div>
     <div class="col-sm-3">
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+
+function searchByName() {
+  $("#content").html("");
+  var swap = '<h3>Search by City Name</h3>';
+  $('#content').append( swap );
+  swap = '<h4>City name</h4>';
+  $('#content').append( swap );
+  swap = '<input type="text" name="" value="" id="cityName" placeholder="McMurdo Station">';
+  $('#content').append( swap );
+  swap = '<h4>Country Code</h4>';
+  $('#content').append( swap );
+  swap = '<input type="text" name="" value="" id="countryCode" maxlength="3" style="width: 60px;" placeholder="AQ">';
+  $('#content').append( swap );
+  swap = '<br><button type="button" id="ok" name="button" onclick="proceed('+"'1'"+');">Send</button>';
+  $('#content').append( swap );
+}
+
+function searchByID() {
+  $("#content").html("");
+  var swap = '<h3>Search by city ID</h3>';
+  $('#content').append( swap );
+  swap = '<h4>City ID</h4>';
+  $('#content').append( swap );
+  swap = '<input type="text" name="" value="" id="cityID" placeholder="6696480">';
+  $('#content').append( swap );
+  swap = '<br><button type="button" id="ok" name="button" onclick="proceed('+"'2'"+');">Send</button>';
+  $('#content').append( swap );
+}
+
+function searchByCoords() {
+  $("#content").html("");
+  var swap = '<h3>Search by Geo Coords</h3>';
+  $('#content').append( swap );
+  swap = '<h4>Latitude</h4>';
+  $('#content').append( swap );
+  swap = '<input type="text" name="" value="" id="cityLongitude" placeholder="-77.6554">';
+  $('#content').append( swap );
+  swap = '<h4>Longitude</h4>';
+  $('#content').append( swap );
+  swap = '<input type="text" name="" value="" id="cityLongitude" placeholder="168.2227">';
+  $('#content').append( swap );
+  swap = '<br><button type="button" id="ok" name="button" onclick="proceed('+"'3'"+');">Send</button>';
+  $('#content').append( swap );
+}
+
+</script>
 
 </body>
 </html>

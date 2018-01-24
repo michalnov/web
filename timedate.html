@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <style>
+.err{
+        width: 50px;
+      height: 20px;
+     color: red;
+     font-style: italic;
+     font-size: 18px;
+     text-align: center;
+        }
+    </style>
+  </head>
+  <body onload="run()">
+<table>
+<tr>
+    <td><label for="">Current date: <input type="text" id="DATE" ></label>
+    </td>
+    <td><label for="">Time: <input type="text" id="TIME" ></label> 
+    </td>     
+</tr>
+  
+<tr>
+    <td><label for="">Date of Birth: <input type="date" id="brith" onchange="changeBirthday()">
+     </label></td>   
+    <td><label for="">Age <input type="text" id="vys"> </label></td>     
+</tr>
+<tr class="err">
+        <td id="firsterr">       </td>
+</tr>
+     <p id="test"></p>
+</table> 
+<script>
+function run()
+{
+    setInterval(datetime, 1000);  
+}
+function datetime()
+{
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+if(dd<10){
+    dd='0'+dd;
+} 
+if(mm<10){
+    mm='0'+mm;
+} 
+var td = dd+'-'+mm+'-'+yyyy;
+document.getElementById("DATE").value = td;
+
+var hod=today.getHours();
+var min=today.getMinutes();
+var sek=today.getSeconds();
+
+if(hod<10){
+    hod='0'+hod;
+} 
+if(min<10){
+    min='0'+min;
+}  
+if(sek<10){
+    sek='0'+sek;
+}      
+var tm= hod+':'+min+':'+sek;
+document.getElementById("TIME").value = tm;
+
+
+}
+
+    
+function changeBirthday()
+{
+var birthdate=document.getElementById("brith").value; 
+var bd = new Date(birthdate);
+var day = bd.getDate();
+var month = bd.getMonth()+1;
+var year = bd.getFullYear();
+
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+
+var age= yyyy-year;
+if(month>mm)
+    document.getElementById("vys").value=age-1;
+else if(month<mm) 
+    document.getElementById("vys").value=age;
+else if(month==mm)
+    {
+        if(day>=dd)
+        document.getElementById("vys").value=age-1;
+        else
+        document.getElementById("vys").value=age;
+    }
+if(age<=0)
+    {
+document.getElementById("firsterr").innerHTML='You havent been born yet!';
+   document.getElementById("vys").value='ERR';     
+    }
+else{
+ document.getElementById("firsterr").innerHTML="";   
+}
+    
+
+
+    
+}
+
+</script>     
+         
+  </body>
+</html>
