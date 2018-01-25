@@ -39,9 +39,9 @@ function createTable(data) {
   $('#results').append( table );
 
   createLine('Temperature: ', (Math.round((parseInt(data.main.temp, 10)-273.15)*1000)/1000), '°C');
-  createLine();
-  createLine();
-  createLine();
+  createLine('Humidity: ', data.main.humidity, '%');
+  createLine('Description: ', data.weather[0].description, ' ');
+  createLine('Pressure: ', data.main.pressure, 'hpa');
   if (true) {
 
   }
@@ -51,7 +51,8 @@ function createTable(data) {
 }
 
 function createLine(rowName, rowData, rowunit) {
-
+  var swap = '<tr><td><h3>'+rowName+'<h3><td><td><h3 style="color: green; margin: 5px;">'+rowData+' '+rowunit+'<h3><td></tr>';
+  $('#resultTable').append( swap );
 }
 
 function createAdditionalInfo() {
