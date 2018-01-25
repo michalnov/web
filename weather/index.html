@@ -4,10 +4,15 @@
   <title>Project Weather</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="source/jquery-3.2.1.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
   <link rel="stylesheet" type="text/css" href="source/style.css">
-  <script type="text/javascript" src="source/myscript.js"></script>
+  <script type="text/javascript" src="source/myScript.js"></script>
   <script type="text/javascript" src="source/jquery-3.2.1.js"></script>
 </head>
 <body>
@@ -32,6 +37,9 @@
 
       <div id="content" class="dynamic">
       </div>
+      <div class="generated" id="results">
+
+      </div>
 
     </div>
     <div class="col-sm-3">
@@ -43,17 +51,15 @@
 
 function searchByName() {
   $("#content").html("");
-  var swap = '<h3>Search by City Name</h3>';
-  $('#content').append( swap );
-  swap = '<h4>City name</h4>';
-  $('#content').append( swap );
-  swap = '<input type="text" name="" value="" id="cityName" placeholder="McMurdo Station">';
-  $('#content').append( swap );
-  swap = '<h4>Country Code</h4>';
-  $('#content').append( swap );
-  swap = '<input type="text" name="" value="" id="countryCode" maxlength="3" style="width: 60px;" placeholder="AQ">';
-  $('#content').append( swap );
-  swap = '<br><button type="button" id="ok" name="button" onclick="proceed('+"'1'"+');">Send</button>';
+  var table = '<table id="contentTable"></table>';
+  $('#content').append( table );
+  var swap = '<br><br><h3>Search by City Name</h3>';
+  $('#contentTable').append( swap );
+  swap = '<tr><td><h4>City name</h4></td><td><input type="text" style="margin: 5px;" id="cityName" placeholder="McMurdo Station"></td></tr>';
+  $('#contentTable').append( swap );
+  swap = '<tr><td><h4>Country Code</h4></td><td><input type="text" style="margin: 5px;" id="countryCode" maxlength="3" style="width: 60px;" placeholder="AQ">';
+  $('#contentTable').append( swap );
+  swap = '<br><button type="button" id="ok" name="button" onclick="proceed('+"'1'"+');" style="margin: 5px;">Send</button>';
   $('#content').append( swap );
 }
 
