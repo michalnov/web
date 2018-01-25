@@ -22,9 +22,6 @@ function proceed(){
           success: function(data){
 
             createTable(data);
-            //console.log(data.main.temp);
-            //var swap = +;
-            //$('#results').append( swap );
       			},
           type: "GET"
   		});
@@ -38,11 +35,15 @@ function createTable(data) {
   var table = '<br><br><table id="resultTable"></table>';
   $('#results').append( table );
 
-  createLine('Temperature: ', (Math.round((parseInt(data.main.temp, 10)-273.15)*1000)/1000), '°C');
+  createLine('Temperature: ', (Math.round((parseInt(data.main.temp, 10)-273.15)*10)/10), '°C');
   createLine('Humidity: ', data.main.humidity, '%');
   createLine('Description: ', data.weather[0].description, ' ');
   createLine('Pressure: ', data.main.pressure, 'hpa');
   if (true) {
+    var sunRise = new Date(data.sys.sunrise*1000);
+    var sunSet = new Date(data.sys.sunset*1000);
+    createLine('Sunrise: ', sunRise.getHours()+':'+sunRise.getMinutes(), ' ');
+    createLine('Sunset: ', sunSet.getHours()+':'+sunSet.getMinutes(), ' ');
 
   }
   else {
