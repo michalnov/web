@@ -44,7 +44,7 @@ function createTable(data) {
     var sunSet = new Date(data.sys.sunset*1000);
     createLine('Sunrise: ', sunRise.getHours()+':'+sunRise.getMinutes(), ' ');
     createLine('Sunset: ', sunSet.getHours()+':'+sunSet.getMinutes(), ' ');
-
+    createLink(data);
   }
   else {
     return;
@@ -56,6 +56,7 @@ function createLine(rowName, rowData, rowunit) {
   $('#resultTable').append( swap );
 }
 
-function createAdditionalInfo() {
-
+function createLink(data) {
+  var swap = '<tr><td><h3>Open in Google Maps: <h3><td><td><h4><a href="https:google.com/maps/search/?api=1&query='+data.coord.lat+','+data.coord.lon+'" target="_blank" style="color: margin: 5px;"> Search </a></h4><td></tr>';
+  $('#resultTable').append( swap );
 }
