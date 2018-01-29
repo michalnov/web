@@ -1,0 +1,38 @@
+input[type=text], input[type=submit], input[type=password], button {
+    width: 100%;
+    padding: 12px 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 15px 15px;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: 'Rouge Script';
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #CCC;
+    color: #555;
+    box-sizing: border-box;
+    position: relative;
+}
+
+input[type=submit], button {
+    background-color: #D4E157;
+    color: white;
+    cursor: pointer;
+    float: left;  
+    position: left;
+    
+}
+label{
+    display: inline-block;
+}
+#logo{
+    padding-top: 40px;
+    width: 150px;
+    height: 75px;
+}
+img{
+    align-items: center;
+}
